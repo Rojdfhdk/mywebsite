@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ماینکرافت لند | دانلود اسکین و ویدیو</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+<style>
+  
+  #profileAvatar {
+  position: fixed;
+  top: 10px;
+  right: 1460px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #00ffcc;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Press Start 2P', cursive;
+    background: #000000;
+    color: #ffffff;
+    direction: rtl;
+    transition: background-color 0.4s, color 0.4s;
+  }
+
+  body.light {
+    background: #e0f0d6;
+    color: #000000;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  header {
+    background: #0f0f0f;
+    box-shadow: 0 0 12px none;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+  }
+  body.light header {
+    background: #d6e7c9;
+    box-shadow: 0 0 12px #2a5a2c;
+  }
+
+  nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    user-select: none;
+    color: #00ff00;
+  }
+  body.light .logo {
+    color: #2a5a2c;
+  }
+
+  .menu {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  }
+
+  .menu a {
+    font-size: 1.1rem;
+    border: 2px solid none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    transition: 0.3s;
+    user-select: none;
+  }
+  .menu a:hover {
+    background: #00ff00;
+    color: #000;
+  }
+  body.light .menu a {
+    border-color: #2a5a2c;
+  }
+  body.light .menu a:hover {
+    background: #2a5a2c;
+    color: #e0f0d6;
+  }
+
+  #toggleTheme {
+    cursor: pointer;
+    font-size: 1.0rem;
+    border-radius: 15px;
+    padding: 8px 14px;
+    border: 2px solid #0f0f0f;
+    background: transparent;
+    color: #ffffff;
+    user-select: none;
+    transition: 0.3s;
+  }
+  #toggleTheme:hover {
+    background: #00ff00;
+    color: #000;
+  }
+  body.light #toggleTheme {
+    border-color: #2a5a2c;
+    color: #2a5a2c;
+  }
+  body.light #toggleTheme:hover {
+    background: #1b3a1a;
+    color: #e0f0d6;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 40px auto 80px;
+    padding: 0 15px;
+  }
+
+  /* --- اسلایدر اسکین‌ها --- */
+  .slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #363636;
+    user-select: none;
+  }
+  body.light .slider {
+    box-shadow: 0 0 30px #2a5a2c;
+  }
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  .slide {
+    min-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .skin-card {
+    background: #0f0f0f;
+    border: 2px solid #474b47;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #b1b1b1;
+    width: 200px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+  }
+  .skin-card:hover {
+    box-shadow: 0 0 30px #000000;
+    transform: scale(1.07);
+  }
+  body.light .skin-card {
+    background: #d6e7c9;
+    border-color: #2a5a2c;
+    box-shadow: 0 0 20px #0f0f0f;
+  }
+  body.light .skin-card:hover {
+    box-shadow: 0 0 30px #2a5a2c;
+  }
+
+  .skin-card img {
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+  }
+  .skin-card h3 {
+    font-size: 0.9rem;
+    margin: 12px;
+    color: #00ff00;
+    text-align: center;
+    flex-grow: 1;
+  }
+  body.light .skin-card h3 {
+    color: #2a5a2c;
+  }
+  .skin-card button {
+    background: #00ff00;
+    border: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    margin: 10px 15px 15px;
+    padding: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #000;
+  }
+  .skin-card button:hover {
+    background: #0c0;
+  }
+  body.light .skin-card button {
+    background: #2a5a2c;
+    color: #e0f0d6;
+  }
+  body.light .skin-card button:hover {
+    background: #1b3a1a;
+  }
+
+  /* دکمه‌های اسلایدر */
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #00ff00;
+    border: none;
+    font-size: 1.7rem;
+    color: #000;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #00ff00;
+    z-index: 10;
+  }
+  .-btn:hover {
+    background: #0c0;
+  }
+  body.light .slider-btn {
+    background: #2a5a2c;
+    color: #e0f0d6;
+    box-shadow: 0 0 20px #2a5a2c;
+  }
+  body.light .slider-btn:hover {
+    background: #1b3a1a;
+  }
+
+  .slider-btn.prev {
+    right: 10px;
+  }
+  .slider-btn.next {
+    left: 10px;
+  }
+
+  /* --- ویدیوها --- */
+  .video-list {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 30px;
+  }
+  .video-card iframe {
+    width: 100%;
+    height: 190px;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 0 25px none;
+    transition: 0.5s;
+  }
+  body.light .video-card iframe {
+    box-shadow: 0 0 25px #2a5a2c;
+  }
+  .video-card h4 {
+    color: #00ff00;
+    font-size: 1rem;
+    margin-top: 14px;
+    text-align: center;
+    user-select: none;
+  }
+  body.light .video-card h4 {
+    color: #2a5a2c;
+  }
+
+  /* --- مودال --- */
+  #skinModal {
+    display: none;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 15000;
+    user-select: none;
+  }
+  #skinModal.active {
+    display: flex;
+  }
+  #skinModal .modal-content {
+    background: #0f0f0f;
+    border: 3px solid #00ff00;
+    border-radius: 30px;
+    padding: 30px 25px;
+    width: 350px;
+    max-width: 90%;
+    color: #00ff00;
+    text-align: center;
+    box-shadow: 0 0 40px #00ff00;
+    position: relative;
+    user-select: text;
+    transition: 0.5s;
+  }
+  body.light #skinModal .modal-content {
+    background: #d6e7c9;
+    border-color: #2a5a2c;
+    color: #2a5a2c;
+    box-shadow: 0 0 40px #2a5a2c;
+  }
+  #skinModal img {
+    width: 160px;
+    border-radius: 20px;
+    border: 3px solid #00ff00;
+    margin-bottom: 18px;
+  }
+  body.light #skinModal img {
+    border-color: #2a5a2c;
+  }
+  #skinModal h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+  #skinModal p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 25px;
+  }
+  #skinModal button {
+    background: #00ff00;
+    border: none;
+    border-radius: 25px;
+    padding: 14px 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #000;
+    transition: 0.3s;
+  }
+  #skinModal button:hover {
+    background: #0c0;
+  }
+  body.light #skinModal button {
+    background: #2a5a2c;
+    color: #e0f0d6;
+  }
+  body.light #skinModal button:hover {
+    background: #1b3a1a;
+  }
+
+  #skinModal .close-btn {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 2.5rem;
+    color: #00ff00;
+    font-weight: 900;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+  }
+  #skinModal .close-btn:hover {
+    color: #0c0;
+  }
+  body.light #skinModal .close-btn {
+    color: #2a5a2c;
+  }
+  body.light #skinModal .close-btn:hover {
+    color: #1b3a1a;
+  }
+
+  /* --- شعر --- */
+  #poem {
+    margin: 50px auto 20px;
+    max-width: 700px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #474b47;
+    color: #00ff00;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    white-space: pre-line;
+    text-align: center;
+    box-shadow: 0 0 20px #474b47;
+    user-select: text;
+  }
+  body.light #poem {
+    border-color: #2a5a2c;
+    box-shadow: 0 0 20px #2a5a2c;
+    color: #2a5a2c;
+  }
+
+  /* --- دکمه تماس --- */
+  #contactBtn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    padding: 16px 24px;
+    background: #00ff00;
+    color: #000;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 25px none;
+    user-select: none;
+    transition: 0.3s;
+    z-index: 2000;
+  }
+  #contactBtn:hover {
+    background: #0c0;
+  }
+  body.light #contactBtn {
+    background: #2a5a2c;
+    color: #d6e7c9;
+    box-shadow: 0 0 25px #2a5a2c;
+  }
+  body.light #contactBtn:hover {
+    background: #1b3a1a;
+  }
+
+  /* --- فوتر --- */
+  footer {
+    background: #000;
+    color: #00ff00;
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 0.75rem;
+    border-top: 3px solid #363636;
+    box-shadow: 0 0 12px #363636;
+    user-select: none;
+    transition: 0.5s;
+  }
+  body.light footer {
+    background: #d6e7c9;
+    color: #2a5a2c;
+    border-color: #2a5a2c;
+    box-shadow: 0 0 12px #2a5a2c;
+  }
+
+  footer a {
+    color: inherit;
+    margin: 0 8px;
+    transition: color 0.3s;
+  }
+  footer a:hover {
+    color: #0c0;
+  }
+  body.light footer a:hover {
+    color: #1b3a1a;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    nav .menu {
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .skin-card {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <a href="login.html">
+    <img id="profileAvatar" alt="Profile">
+    </a>
+  <nav>
+    <picture style="position: absolute;top: 0.1px;right: 10px;width: 67px;">
+      <img src="img/minecraftland.png" alt="jggjg" style="width: 100%;height: auto;">
+    </picture>
+    <div class="logo">Minecraft Land</div>
+    <div class="menu">
+      <a href="#skinsSection">اسکین‌ها</a>
+      <a href="#videosSection">ویدیوها</a>
+      <a href="#poem">شعر</a>
+        <a href="server.html" target="_blank" rel="noopener noreferrer">سرور ها</a>
+      <button id="toggleTheme" aria-label="تغییر حالت شب و روز">حالت روز</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- اسلایدر اسکین‌ها -->
+  <section id="skinsSection">
+    <h2>اسکین‌ها</h2>
+    <div class="slider">
+      <button class="slider-btn prev" aria-label="اسلاید قبلی">&#10095;</button>
+      <div class="slides" id="slidesContainer">
+        <!-- اسکین‌ها اینجا قرار می‌گیرند با جاوااسکریپت -->
+      </div>
+      <button class="slider-btn next" aria-label="اسلاید بعدی">&#10094;</button>
+    </div>
+  </section>
+
+  <!-- ویدیوها -->
+  <section id="videosSection">
+    <h2>ویدیوها</h2>
+    <div class="video-list" id="videoList">
+      <!-- ویدیوها با جاوا اسکریپت اضافه میشن -->
+    </div>
+  </section>
+
+  <!-- شعر -->
+  <section id="poem">
+    <h2> شعر ماینکرافتی</h2>
+    <p>
+      <h3>
+      تو دنیای مکعبا، شب میشه پر از خطر<br>
+      یه شمشیر تو دستمه، روبه‌رو دشمن بشر<br>
+      کریپرها پا می‌ذارن، زامبی‌ها تو صف هستن<br>
+      ولی منم قهرمانم، با دل شیر و شمشیر تن
+      </h3>
+    </p>
+  </section>
+</main>
+
+<!-- دکمه تماس -->
+<a href="posh.html" id="contactBtn"><h3>پشتیبانی📭</h3></a>
+<!-- مودال اسکین -->
+<div id="skinModal">
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalSkinTitle">
+    <div class="close-btn" id="modalCloseBtn" aria-label="بستن مودال">&times;</div>
+    <img src="" alt="تصویر اسکین" id="modalSkinImg" />
+    <h3 id="modalSkinTitle"></h3>
+    <p id="modalSkinDesc"></p>
+    <a id="modalSkinDownload" href="#" download><button>دانلود اسکین</button></a>
+  </div>
+</div>
+
+<footer>
+  طراحی شده توسط رهام یزدانی ❤️ | Minecraft Land © 2025
+  <br />
+  شماره تماس: ۰۹۳۳۲۷۷۸۹۴۳ | 
+  <a href="https://youtube.com/@minecraftland6?si=LZfm2Xn9VZxyl5nY" target="_blank" rel="noopener noreferrer">کانال یوتیوب</a> | 
+  <a href="https://ble.ir/join/FJJ4Y1NYkC" target="_blank" rel="noopener noreferrer">کانال بله</a>
+</footer>
+
+<script>
+  // داده اسکین‌ها
+  const skins = [
+    {
+      title: 'NeonBoy',
+      img: 'https://........',
+      desc: 'اسکین نئون بوی با رنگ‌های درخشان و طراحی جذاب.',
+      download: 'https://example.com/neonboy-skin.zip'
+    },
+    {
+      title: 'Shadow Ninja',
+      img: 'https://i.imgur.com/xyzABCd.png',
+      desc: 'اسکین نینجای سایه با طراحی تاریک و مرموز.',
+      download: 'https://example.com/shadowninja-skin.zip'
+    },
+        {
+      title: 'Shadow Ninja',
+      img: 'avatar.png',
+      desc: 'اسکین نینجای سایه با طراحی تاریک و مرموز.',
+      download: 'https://example.com/shadowninja-skin.zip'
+    },
+    // می‌تونی اینجا اسکین‌های بیشتر اضافه کنی
+  ];
+
+  // داده ویدیوها
+  const videos = [
+    {
+      title: 'آموزش ساخت خانه در ماینکرافت',
+      src: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    },
+    {
+      title: 'چگونه منابع را سریع جمع کنیم',
+      src: 'https://www.youtube.com/embed/oHg5SJYRHA0'
+    },
+  ];
+
+  // اضافه کردن اسکین‌ها به اسلایدر
+  const slidesContainer = document.getElementById('slidesContainer');
+  const skinsPerSlide = 2;
+  const totalSlides = Math.ceil(skins.length / skinsPerSlide);
+  let currentSlide = 0;
+
+  function renderSlides() {
+    slidesContainer.innerHTML = '';
+    for(let i = 0; i < totalSlides; i++) {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      const start = i * skinsPerSlide;
+      const end = start + skinsPerSlide;
+      const skinsSlice = skins.slice(start, end);
+      skinsSlice.forEach((skin, idx) => {
+        const card = document.createElement('div');
+        card.className = 'skin-card';
+        card.innerHTML = `
+          <img src="${skin.img}" alt="${skin.title}" />
+          <h3>${skin.title}</h3>
+          <button data-index="${start + idx}">مشاهده و دانلود</button>
+        `;
+        slide.appendChild(card);
+      });
+      slidesContainer.appendChild(slide);
+    }
+    updateSlidePosition();
+  }
+
+  function updateSlidePosition() {
+    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+
+  document.querySelector('.slider-btn.prev').addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlidePosition();
+  });
+
+  document.querySelector('.slider-btn.next').addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlidePosition();
+  });
+
+  // مودال اسکین
+  const skinModal = document.getElementById('skinModal');
+  const modalSkinImg = document.getElementById('modalSkinImg');
+  const modalSkinTitle = document.getElementById('modalSkinTitle');
+  const modalSkinDesc = document.getElementById('modalSkinDesc');
+  const modalSkinDownload = document.getElementById('modalSkinDownload');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+  // باز کردن مودال اسکین وقتی دکمه دانلود کلیک میشه
+  slidesContainer.addEventListener('click', e => {
+    if(e.target.tagName === 'BUTTON') {
+      const idx = +e.target.getAttribute('data-index');
+      const skin = skins[idx];
+      modalSkinImg.src = skin.img;
+      modalSkinImg.alt = skin.title;
+      modalSkinTitle.textContent = skin.title;
+      modalSkinDesc.textContent = skin.desc;
+      modalSkinDownload.href = skin.download;
+      skinModal.classList.add('active');
+    }
+  });
+
+  // بستن مودال
+  modalCloseBtn.addEventListener('click', () => {
+    skinModal.classList.remove('active');
+  });
+
+  // بستن مودال با کلیک روی پس‌زمینه مودال
+  skinModal.addEventListener('click', e => {
+    if(e.target === skinModal) {
+      skinModal.classList.remove('active');
+    }
+  });
+
+  // اضافه کردن ویدیوها به بخش ویدیو
+  const videoList = document.getElementById('videoList');
+  videos.forEach(video => {
+    const card = document.createElement('div');
+    card.className = 'video-card';
+    card.innerHTML = `
+      <iframe src="${video.src}" title="${video.title}" allowfullscreen></iframe>
+      <h4>${video.title}</h4>
+    `;
+    videoList.appendChild(card);
+  });
+
+  // حالت شب و روز
+  const toggleThemeBtn = document.getElementById('toggleTheme');
+
+  // تابع تغییر حالت
+  function toggleTheme() {
+    const isLight = document.body.classList.toggle('light');
+    toggleThemeBtn.textContent = isLight ? 'حالت شب' : 'حالت روز';
+  }
+
+  toggleThemeBtn.addEventListener('click', toggleTheme);
+
+  // رندر اولیه اسلایدر
+  renderSlides();
+
+</script>
+<script>
+  // چک می‌کنه آیا کاربر ثبت‌نام کرده یا نه
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  // اگر ثبت‌نام کرده باشه، عکس خودشو نشون می‌ده
+  if (isLoggedIn === "true") {
+    const profilePic = localStorage.getItem("profilePic"); // لینک عکس ذخیره شده
+    document.getElementById("profileAvatar").src = profilePic || "img/avatar.png";
+  } else {
+    // اگر ثبت‌نام نکرده باشه، یه آدمک پیش‌فرض نشون بده
+    document.getElementById("profileAvatar").src = "guest.png"; // آدمک پیش‌فرض
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>پروفایل من - ماینکرافت لند</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #222;
+      text-align: center;
+    }
+    img {
+      width: 100px;
+      border-radius: 50%;
+      border: 3px solid #4CAF50;
+      margin-bottom: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background-color: #0a0;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0f0;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      color: #0f0;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>پروفایل من</h1>
+  <img id="avatar" src="" alt="avatar" />
+  <p><strong>نام کاربری:</strong> <span id="username"></span></p>
+  <p><strong>ایمیل یا شماره تلفن:</strong> <span id="emailOrPhone"></span></p>
+
+  <h3>تغییر رمز عبور</h3>
+  <input type="password" id="oldPassword" placeholder="رمز فعلی" />
+  <input type="password" id="newPassword" placeholder="رمز جدید" />
+  <button id="changePassBtn">تغییر رمز</button>
+
+  <button id="logoutBtn">خروج از حساب</button>
+
+  <a id="backLink" style="text-decoration: none; background-color: #e80000;color: #ffffff;
+  border-radius: 5px;padding: 10px;
+  margin: 8px 0;width: 180px;
+  text-align: center;">بازگشت به صفحه اصلی</a>
+
+  <script>
+    function loadProfile() {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const loggedIn = localStorage.getItem('loggedIn');
+      if (!user || loggedIn !== 'true') {
+        alert('لطفا ابتدا وارد شوید!')
+        window.location.href = 'login.html';
+        return;
+      }
+      document.getElementById('avatar').src= 'avatar.png';
+      document.getElementById('username').textContent = user.username;
+      document.getElementById('emailOrPhone').textContent = user.emailOrPhone || '';
+    }
+
+    function logout() {
+      localStorage.removeItem('loggedIn');
+      alert('از حساب خارج شدید.');
+      window.location.href = 'index.html';
+      localStorage.removeItem("username")
+      localStorage.removeItem("password")
+      localStorage.removeItem("emailOrPhone")
+    }
+
+    function changePassword() {
+      const oldPass = document.getElementById('oldPassword').value;
+      const newPass = document.getElementById('newPassword').value;
+      const user = JSON.parse(localStorage.getItem('user'));
+
+      if (oldPass !== user.password) {
+        alert('رمز فعلی اشتباه است.');
+        return;
+      }
+      if (newPass.length < 3) {
+        alert('رمز جدید باید حداقل ۳ کاراکتر باشد.');
+        return;
+      }
+      user.password = newPass;
+      localStorage.setItem('user', JSON.stringify(user));
+      alert('رمز با موفقیت تغییر کرد.');
+      document.getElementById('oldPassword').value = '';
+      document.getElementById('newPassword').value = '';
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+    document.getElementById('changePassBtn').addEventListener('click', changePassword);
+    document.getElementById('backLink').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+
+    window.onload = loadProfile;
+  </script>
+</body>
+</html>

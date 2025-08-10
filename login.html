@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>ورود / ثبت‌نام - ماینکرافت لند</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    input, button {
+      width: 300px;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background-color: #0a0;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0f0;
+    }
+    a {
+      color: #0f0;
+      cursor: pointer;
+      margin-top: 15px;
+      text-decoration: underline;
+    }
+    #toggleForm {
+      margin-top: 15px;
+      cursor: pointer;
+      color: #0f0;
+      text-decoration: underline;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="formContainer">
+    <br>
+    <h2 id="formTitle">ورود</h2>
+    <br>
+    <input type="text" id="username" placeholder="نام کاربری" />
+    <br>
+    <input type="text" id="emailOrPhone" placeholder="ایمیل یا شماره تلفن" style="display:none;" />
+    <input type="password" id="password" placeholder="رمز عبور" />
+    <br>
+    <button id="submitBtn">ورود</button>
+    <div id="toggleForm">ثبت‌نام؟ اینجا کلیک کن </div>
+  </div> 
+  <script>
+    let isLogin = true;
+
+    const formTitle = document.getElementById('formTitle');
+    const emailOrPhone = document.getElementById('emailOrPhone');
+    const toggleForm = document.getElementById('toggleForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    toggleForm.addEventListener('click', () => {
+      isLogin = !isLogin;
+      if (isLogin) {
+        formTitle.textContent = 'ورود';
+        emailOrPhone.style.display = 'none';
+        submitBtn.textContent = 'ورود';
+        toggleForm.textContent = 'ثبت‌نام؟ اینجا کلیک کن';
+      } else {
+        formTitle.textContent = 'ثبت‌نام';
+        emailOrPhone.style.display = 'block';
+        submitBtn.textContent = 'ثبت‌نام';
+        toggleForm.textContent = 'قبلاً ثبت‌نام کردی؟ ورود';
+      }
+    });
+
+    submitBtn.addEventListener('click', () => {
+      const username = document.getElementById('username').value.trim();
+      const emailOrPhoneVal = emailOrPhone.value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!username || !password || (!isLogin && !emailOrPhoneVal)) {
+        alert('لطفاً همه فیلدها را کامل کنید.');
+        return;
+      }
+
+      let user = JSON.parse(localStorage.getItem('user'));
+
+      if (isLogin) {
+        // ورود
+        if (user && user.username === username && user.password === password) {
+          alert('ورود موفق!');
+          localStorage.setItem('loggedIn', 'true');
+          window.location.href = 'profile.html';
+        } else {
+          alert('نام کاربری یا رمز اشتباه است.');
+        }
+      } else {
+        // ثبت‌نام
+        if (user && user.username === username) {
+          alert('این نام کاربری قبلاً ثبت شده.');
+          return;
+        }
+        // ثبت نام جدید
+        user = { username, emailOrPhone: emailOrPhoneVal, password };
+        localStorage.setItem('user', JSON.stringify(user));
+        alert('ثبت‌نام موفق! حالا وارد شوید.');
+        isLogin = true;
+        formTitle.textContent = 'ورود';
+        emailOrPhone.style.display = 'none';
+        submitBtn.textContent = 'ورود';
+        toggleForm.textContent = 'ثبت‌نام؟ اینجا کلیک کن';
+      }
+    });
+  </script>
+</body>
+</html>
